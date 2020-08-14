@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "709866796185",
+    "firebase_url": "https://msu3-3aedd.firebaseio.com",
+    "project_id": "msu3-3aedd",
+    "storage_bucket": "msu3-3aedd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709866796185:android:e040eb798f605d8d1b3408",
+        "android_client_info": {
+          "package_name": "com.example.ms3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709866796185-cvvio49lglmdvhnqoon3so35qegi2ktm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVkhfNxrQZyfNq7XasQ_KLh7DvXI7SSu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709866796185-cvvio49lglmdvhnqoon3so35qegi2ktm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

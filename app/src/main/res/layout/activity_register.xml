@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@android:string/no"
+            android:src="@drawable/ms3">
+
+        </ImageView>
+
+
+        <TextView
+            android:id="@+id/DriverLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_marginTop="220dp"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textColor="@android:color/background_dark"
+
+            />
+
+        <EditText
+            android:id="@+id/User_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email address..."
+            android:layout_marginTop="290dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="22sp"
+            />
+
+        <EditText
+            android:id="@+id/User_Password"
+            android:hint="Password..."
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginRight="20dp"
+            android:textSize="22sp"
+
+            />
+
+        <EditText
+            android:id="@+id/User_Contact"
+            android:hint="Contact no..."
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginRight="20dp"
+            android:textSize="22sp"
+
+            />
+
+
+        <Button
+            android:id="@+id/Driver_Login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="20sp"
+            android:background="#EFBCBE"
+            android:layout_marginTop="500dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
