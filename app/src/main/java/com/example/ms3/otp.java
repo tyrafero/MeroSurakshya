@@ -51,7 +51,7 @@ public class otp extends AppCompatActivity {
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!mPhone.getText().toString().isEmpty()&&mPhone.getText().toString().length()==10){
+                if(!mPhone.getText().toString().isEmpty()&& mPhone.getText().toString().length()==10){
                     String phoneNum= "+" + codePicker.getSelectedCountryCode()+mPhone.getText().toString();
                     Log.d("mPhone", "Phone No.: " + phoneNum);
                     mProgressBar.setVisibility(View.VISIBLE);
