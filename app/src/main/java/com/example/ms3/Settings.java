@@ -27,7 +27,7 @@ public class Settings extends AppCompatActivity {
                         fragment=new homeFragment();
                         break;
                     case R.id.police:
-                        fragment=new locationFragment();
+                        fragment=new MapsFragment();
                         break;
                     case R.id.period:
                         fragment=new periodFragment();
