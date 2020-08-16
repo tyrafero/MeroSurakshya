@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        app:cnb_backgroundColor="@color/colorPrimary"
+        app:cnb_iconColor="@color/colorPrimaryDark"
+        app:cnb_textColor="@color/colorPrimaryDark"
+        android:title="HOME"/>
+    <item
+        android:id="@+id/police"
+        android:icon="@drawable/location"
+        app:cnb_backgroundColor="@color/colorPrimary"
+        app:cnb_iconColor="@color/colorPrimaryDark"
+        app:cnb_textColor="@color/colorPrimaryDark"
+        android:title="POLICE"/>
+    <item
+        android:id="@+id/period"
+        android:icon="@drawable/calendar"
+        app:cnb_backgroundColor="@color/colorPrimary"
+        app:cnb_iconColor="@color/colorPrimaryDark"
+        app:cnb_textColor="@color/colorPrimaryDark"
+        android:title="PERIOD"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        app:cnb_backgroundColor="@color/colorPrimary"
+        app:cnb_iconColor="@color/colorPrimaryDark"
+        app:cnb_textColor="@color/colorPrimaryDark"
+        android:title="SETTINGS"/>
+</menu>
