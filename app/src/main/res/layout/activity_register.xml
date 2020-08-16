@@ -32,11 +32,12 @@
             />
 
         <EditText
-            android:id="@+id/User_Email"
+            android:id="@+id/User_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="Email address..."
+            android:hint="  Name..."
+            android:drawableLeft="@drawable/person"
             android:layout_marginTop="290dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -44,11 +45,12 @@
             />
 
         <EditText
-            android:id="@+id/User_Password"
-            android:hint="Password..."
-            android:inputType="textPassword"
+            android:id="@+id/User_Email"
+            android:hint="  Email..."
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/mail"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="350dp"
             android:layout_marginRight="20dp"
@@ -58,10 +60,11 @@
 
         <EditText
             android:id="@+id/User_Contact"
-            android:hint="Contact no..."
-            android:inputType="textPassword"
+            android:hint="  Contact no..."
+            android:inputType="text|phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/phone"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="410dp"
             android:layout_marginRight="20dp"
@@ -71,7 +74,7 @@
 
 
         <Button
-            android:id="@+id/Driver_Login_btn"
+            android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
