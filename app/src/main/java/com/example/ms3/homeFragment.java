@@ -1,64 +1,72 @@
 package com.example.ms3;
 
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link homeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.firebase.geofire.GeoQuery;
+import com.firebase.geofire.GeoQueryEventListener;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
+
 public class homeFragment extends Fragment {
+    private Button b1;
+    private LatLng userLocation;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Location mLastLocation;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public homeFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment homeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static homeFragment newInstance(String param1, String param2) {
-        homeFragment fragment = new homeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view= inflater.inflate(R.layout.fragment_home,container,false);
+        b1= view.findViewById(R.id.button);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Location");
+//                GeoFire geofire =new GeoFire(ref);
+//                geofire.setLocation(userId,new GeoLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
+//
+//                userLocation=new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+
+            }
+        });
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return view;
+    }
+
+
+    public void sendLocationSMS(String phoneNumber, Location currentLocation) {
+        SmsManager smsManager = SmsManager.getDefault();
+        StringBuffer smsBody = new StringBuffer();
+        smsBody.append("http://maps.google.com?q=");
+        smsBody.append(currentLocation.getLatitude());
+        smsBody.append(",");
+        smsBody.append(currentLocation.getLongitude());
+        smsManager.sendTextMessage("9861286961", null, smsBody.toString(), null, null);
     }
 }

@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".periodFragment"
     android:background="#FFFFFF">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Period Fragment" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/blood"
+            app:layout_constraintBottom_toTopOf="@+id/compactcalendar_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/compactcalendar_view"
+            android:layout_width="395dp"
+            android:layout_height="341dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="#F1B5B4"
+            app:compactCalendarCurrentDayBackgroundColor="#ED8D8D"
+            app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#CACACA"
+            app:compactCalendarMultiEventIndicatorColor="#515C97"
+            app:compactCalendarTargetHeight="350dp"
+            app:compactCalendarTextColor="#070707"
+            app:compactCalendarCurrentSelectedDayIndicatorStyle="fill_large_indicator"
+            app:compactCalendarTextSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <Button
+            android:layout_width="292dp"
+            android:layout_height="42dp"
+            android:text="Log My Period"
+            app:layout_constraintEnd_toEndOf="@+id/compactcalendar_view"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/compactcalendar_view"
+            app:layout_constraintTop_toBottomOf="@+id/compactcalendar_view" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="231dp"
+            android:layout_height="31dp"
+            android:text="Log your Period"
+            android:textAlignment="center"
+            android:textColor="#B87F7E"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/compactcalendar_view"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.973" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
