@@ -1,5 +1,6 @@
 package com.example.ms3;
 
+import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.graphics.Color;
@@ -17,8 +18,11 @@ import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,12 +30,7 @@ import static com.example.ms3.otp.TAG;
 
 
 public class periodFragment extends Fragment {
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy", /*Locale.getDefault()*/Locale.ENGLISH);
 
-
-    Calendar now =Calendar.getInstance();
-    DatePickerDialog dpd;
-    TimePickerDialog tpd;
 
 
 
@@ -47,31 +46,22 @@ public class periodFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_period,container,false);
 
-        final CompactCalendarView cView= view.findViewById(R.id.compactcalendar_view);
-        cView.setFirstDayOfWeek(Calendar.SATURDAY);
-        
+        final List<String> mutableBookings = new ArrayList<>();
 
-        cView.setShouldDrawDaysHeader(true);
+
+
+        //toolbar.setTitle(dateFormatForMonth.format(cView.getFirstDayOfCurrentMonth()));
+
 
 
         // events has size 2 with the 2 events inserted previously
         // define a listener to receive callbacks when certain events happen.
-        cView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
-            @Override
-            public void onDayClick(Date dateClicked) {
 
-
-            }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-                Log.d(TAG, "Month was scrolled to: " + firstDayOfNewMonth);
-            }
-        });
         
         
         return inflater.inflate(R.layout.fragment_period, container, false);
     }
+
 
 
 }
