@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="301dp"
-            android:layout_height="215dp"
+            android:layout_width="287dp"
+            android:layout_height="181dp"
             android:src="@drawable/blood"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,7 @@
             android:layout_height="42dp"
             android:layout_marginTop="20dp"
             android:text="Log My Period"
+            android:background="#F8D6D5"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -36,12 +37,13 @@
             android:layout_height="31dp"
             android:text="Log your Period"
             android:textAlignment="center"
-            android:textColor="#B87F7E"
+            android:textColor="#CC9392"
             android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/calendarView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="1.0" />
 
         <CalendarView
             android:id="@+id/calendarView"
