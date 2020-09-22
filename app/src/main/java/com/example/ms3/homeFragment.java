@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
@@ -26,16 +29,25 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.ValueEventListener;
 
 
 public class homeFragment extends Fragment {
-    private Button b1, button1;
+    private Button b1, button1, b6;
+    private EditText e6;
+    String number, userid;
     private LatLng userLocation;
     Location lastLocation;
     LocationRequest locationRequest;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
+
 
 
     private FusedLocationProviderClient mFusedLocationClient;
@@ -64,6 +76,35 @@ public class homeFragment extends Fragment {
             }
         });
 
+        e6 = view.findViewById(R.id.edittext);
+        b6 = view.findViewById(R.id.b6);
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = e6.getText().toString();
+                userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("users");
+                reference.child(userid).child("E_Number").setValue(number);
+
+                DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
+                refNum.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String em = snapshot.child("E_Number").getValue().toString();
+                            e6.setText(em);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;

@@ -73,18 +73,31 @@
         app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-    <Button
-        android:id="@+id/button6"
+    <EditText
+        android:id="@+id/edittext"
         android:layout_width="160dp"
         android:layout_height="48dp"
         android:layout_marginTop="244dp"
-        android:text="Add Numbers"
+        android:inputType="number"
+        android:hint="Add Number"
         android:drawableLeft="@drawable/add"
         android:background="#BAA5A5"
         app:layout_constraintEnd_toEndOf="@+id/button5"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/b6"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:text="Save"
+        android:background="#BAA5A5"
+        app:layout_constraintEnd_toEndOf="@+id/edittext"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/edittext"
+        app:layout_constraintTop_toBottomOf="@+id/edittext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
