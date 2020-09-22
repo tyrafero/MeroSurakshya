@@ -106,6 +106,24 @@ public class homeFragment extends Fragment {
             }
         });
 
+        userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid).child("E_Number");
+        refNum.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String em = snapshot.getValue().toString();
+                    e6.setText(em);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
         // Inflate the layout for this fragment
         return view;
     }
