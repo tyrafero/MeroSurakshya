@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
         android:layout_width="232dp"
         android:layout_height="219dp"
@@ -76,12 +76,12 @@
     <EditText
         android:id="@+id/edittext"
         android:layout_width="160dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="244dp"
         android:inputType="number"
         android:hint="Add Number"
         android:drawableLeft="@drawable/add"
-        android:background= "#FFCCCB"
+        android:background="#BAA5A5"
         app:layout_constraintEnd_toEndOf="@+id/button5"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/button5"
@@ -89,11 +89,11 @@
 
     <Button
         android:id="@+id/b6"
-        android:layout_width="75dp"
-        android:layout_height="30dp"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:text="Save"
-        android:background="#F8D6D5"
+        android:background="#BAA5A5"
         app:layout_constraintEnd_toEndOf="@+id/edittext"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/edittext"

@@ -23,10 +23,11 @@
         <Button
             android:layout_width="292dp"
             android:layout_height="42dp"
-            android:layout_marginTop="28dp"
-            android:background="#F8D6D5"
+            android:layout_marginTop="20dp"
             android:text="Log My Period"
+            android:background="#F8D6D5"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
