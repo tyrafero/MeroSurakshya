@@ -76,37 +76,21 @@ public class homeFragment extends Fragment {
             }
         });
 
+        userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         e6 = view.findViewById(R.id.edittext);
         b6 = view.findViewById(R.id.b6);
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String number = e6.getText().toString();
-                userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("users");
                 reference.child(userid).child("E_Number").setValue(number);
 
-                DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
-                refNum.addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            String em = snapshot.child("E_Number").getValue().toString();
-                            e6.setText(em);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-
             }
         });
 
-        userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid).child("E_Number");
         refNum.addValueEventListener(new ValueEventListener() {
 
