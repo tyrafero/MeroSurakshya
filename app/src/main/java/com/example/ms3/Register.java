@@ -57,6 +57,7 @@ public class Register extends AppCompatActivity {
                     user.put("email",Email);
                     user.put("contact",Contact);
 
+
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
