@@ -51,7 +51,7 @@ import java.util.Locale;
 public class homeFragment extends Fragment {
     private Button b1, button1, b6;
     private EditText e6;
-    String number, userid,em,en,rLocation;
+    String number, userid,em,en,eLocation;
     private LatLng userLocation;
     Location lastLocation;
     LocationRequest locationRequest;
@@ -92,6 +92,7 @@ public class homeFragment extends Fragment {
         bmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 getCurrentLocation();
 
                 int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
@@ -126,6 +127,7 @@ public class homeFragment extends Fragment {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 if (snapshot.exists()) {
                     en = snapshot.getValue().toString();
                     e6.setText(en);
@@ -136,6 +138,23 @@ public class homeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        DatabaseReference refLoc = FirebaseDatabase.getInstance().getReference().child("users").child(userid).child("C_Location");
+        refLoc.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()) {
+                    eLocation = snapshot.getValue().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
 
 
         // Inflate the layout for this fragment
@@ -165,7 +184,7 @@ public class homeFragment extends Fragment {
                                 location.getLatitude(),location.getLongitude(),1
                         );
 
-                        rLocation= addresses.get(0).getAddressLine(0);
+                        String rLocation= addresses.get(0).getAddressLine(0);
 
                         reference = FirebaseDatabase.getInstance().getReference("users");
                         reference.child(userid).child("C_Location").setValue(rLocation);
@@ -214,7 +233,7 @@ public class homeFragment extends Fragment {
 
     private void MyMessage() {
 
-        em = "I am in danger. Please help me. Location : " + rLocation ;
+        em = "I am in danger. Please help me. Location : " + eLocation ;
 
         String e_Num = en;
         String e_Msg = em;
