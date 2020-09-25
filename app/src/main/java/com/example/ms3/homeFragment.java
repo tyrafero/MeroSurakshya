@@ -18,8 +18,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoQuery;
@@ -49,7 +51,7 @@ import java.util.Locale;
 public class homeFragment extends Fragment {
     private Button b1, button1, b6;
     private EditText e6;
-    String number, userid;
+    String number, userid,em,en,rLocation;
     private LatLng userLocation;
     Location lastLocation;
     LocationRequest locationRequest;
@@ -76,7 +78,8 @@ public class homeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Button bmain = view.findViewById(R.id.button);
+        ImageButton bmain = view.findViewById(R.id.button);
+        userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         button1 = view.findViewById(R.id.button5);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +93,19 @@ public class homeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getCurrentLocation();
+
+                int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
+
+                if (permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    MyMessage();
+                }
+                else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.SEND_SMS}, 0);
+                }
+
             }
         });
+
         e6 = view.findViewById(R.id.edittext);
         b6 = view.findViewById(R.id.b6);
 
@@ -100,39 +114,21 @@ public class homeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String number = e6.getText().toString();
-                userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("users");
                 reference.child(userid).child("E_Number").setValue(number);
 
-                DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid);
-                refNum.addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            String em = snapshot.child("E_Number").getValue().toString();
-                            e6.setText(em);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-
             }
         });
 
-        userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference refNum = FirebaseDatabase.getInstance().getReference().child("users").child(userid).child("E_Number");
         refNum.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String em = snapshot.getValue().toString();
-                    e6.setText(em);
+                    en = snapshot.getValue().toString();
+                    e6.setText(en);
                 }
             }
 
@@ -168,11 +164,13 @@ public class homeFragment extends Fragment {
                         List<Address>addresses= geocoder.getFromLocation(
                                 location.getLatitude(),location.getLongitude(),1
                         );
-                        //String yaha cha
-                        //Yo check gara
-                        //Nilesh
-                        String rLocation= addresses.get(0).getAddressLine(0);
-                        Toast.makeText(getContext(),rLocation,Toast.LENGTH_LONG).show();
+
+                        rLocation= addresses.get(0).getAddressLine(0);
+
+                        reference = FirebaseDatabase.getInstance().getReference("users");
+                        reference.child(userid).child("C_Location").setValue(rLocation);
+
+                        Toast.makeText(getContext(),"Emergency message sending...",Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -212,6 +210,45 @@ public class homeFragment extends Fragment {
             return true;
         }
 
+    }
+
+    private void MyMessage() {
+
+        em = "I am in danger. Please help me. Location : " + rLocation ;
+
+        String e_Num = en;
+        String e_Msg = em;
+
+        if (!e_Num.equals("") || !e_Msg.equals("")) {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(e_Num, null, e_Msg, null, null);
+
+            Toast.makeText(getContext(), "Message sent", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(getContext(), "Message Error", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+
+            case 0 :
+
+                if (grantResults.length>=0  && grantResults[0]== PackageManager.PERMISSION_GRANTED) {
+
+                    MyMessage();
+                }
+                else {
+                    Toast.makeText(getContext(), "Permission Required", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+
+        }
 
     }
 }
