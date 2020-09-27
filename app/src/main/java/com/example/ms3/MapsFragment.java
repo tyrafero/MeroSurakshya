@@ -47,6 +47,7 @@ GoogleApiClient.OnConnectionFailedListener,
     //
     //Nilesh Check this
     //Latitude and laongitude
+    //sorry nilesh dai
     double latitude=27.68,longitude=85.38;
     Location mLocation;
     Button b7;
