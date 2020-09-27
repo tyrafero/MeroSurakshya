@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,6 +34,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -42,13 +52,14 @@ GoogleApiClient.OnConnectionFailedListener,
     private Location lastlocation;
     private Marker currentLocationmMarker;
     public static final int REQUEST_LOCATION_CODE = 99;
+    private FusedLocationProviderClient mFusedLocationClient;
     int PROXIMITY_RADIUS = 1000;
     //
     //
     //Nilesh Check this
     //Latitude and laongitude
     //sorry nilesh dai
-    double latitude=27.68,longitude=85.38;
+    double latitude,longitude;
     Location mLocation;
     Button b7;
 
@@ -88,9 +99,44 @@ GoogleApiClient.OnConnectionFailedListener,
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         b7=view.findViewById(R.id.button7);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        Location location = task.getResult();
+                        if (location != null) {
+
+                            try {
+                                Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                                List<Address> addresses= geocoder.getFromLocation(
+                                        location.getLatitude(),location.getLongitude(),1
+                                );
+
+                                latitude = location.getLatitude();
+                                longitude = location.getLongitude();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+                });
+
                 mMap.clear();
                 Object dataTransfer[] = new Object[2];
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
