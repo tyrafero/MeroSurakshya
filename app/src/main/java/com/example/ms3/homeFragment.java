@@ -88,6 +88,7 @@ public class homeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
         bmain.setOnClickListener(new View.OnClickListener() {
             @Override

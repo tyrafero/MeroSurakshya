@@ -11,17 +11,25 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback,
@@ -29,6 +37,20 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
 GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
     private GoogleMap mMap;
+    private GoogleApiClient client;
+    private LocationRequest locationRequest;
+    private Location lastlocation;
+    private Marker currentLocationmMarker;
+    public static final int REQUEST_LOCATION_CODE = 99;
+    int PROXIMITY_RADIUS = 1000;
+    //
+    //
+    //Nilesh Check this
+    //Latitude and laongitude
+    double latitude=27.68,longitude=85.38;
+    Location mLocation;
+    Button b7;
+
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -46,9 +68,10 @@ GoogleApiClient.OnConnectionFailedListener,
             mMap = googleMap;
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
             mMap.getUiSettings().setZoomControlsEnabled(true);
-            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             checkLocationPermission();
             mMap.setMyLocationEnabled(true);
+
         }
     };
 
@@ -63,12 +86,33 @@ GoogleApiClient.OnConnectionFailedListener,
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        b7=view.findViewById(R.id.button7);
+        b7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMap.clear();
+                Object dataTransfer[] = new Object[2];
+                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+                String police= "police";
+                String url= getUrl(latitude,longitude,police);
+                dataTransfer[0]=mMap;
+                dataTransfer[1]=url;
+                getNearbyPlacesData.execute(dataTransfer);
+                Toast.makeText(getContext(),"Showing Nearby Police Stations",Toast.LENGTH_SHORT).show();
+            }
+        });
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
     }
+    protected synchronized void bulidGoogleApiClient() {
+        client = new GoogleApiClient.Builder(getContext()).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();
+        client.connect();
+
+    }
+
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
@@ -102,11 +146,52 @@ GoogleApiClient.OnConnectionFailedListener,
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        lastlocation = location;
+        if(currentLocationmMarker != null)
+        {
+            currentLocationmMarker.remove();
 
+        }
+        Log.d("lat = ",""+latitude);
+        LatLng latLng = new LatLng(location.getLatitude() , location.getLongitude());
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title("Current Location");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        currentLocationmMarker = mMap.addMarker(markerOptions);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+
+//        if(client != null)
+//        {
+//            LocationServices.FusedLocationApi.removeLocationUpdates(client,);
+//        }
+
+    }
+    private String getUrl(double latitude , double longitude , String nearbyPlace)
+    {
+
+        StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googlePlaceUrl.append("location="+latitude+","+longitude);
+        googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
+        googlePlaceUrl.append("&type="+nearbyPlace);
+        googlePlaceUrl.append("&sensor=true");
+        googlePlaceUrl.append("&key="+"AIzaSyDDZcscrAvTyTwUYjaxFsGE4uZBXp8QSZw");
+
+        Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
+
+        return googlePlaceUrl.toString();
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(100);
+        locationRequest.setFastestInterval(1000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
 
     }
 
@@ -124,4 +209,5 @@ GoogleApiClient.OnConnectionFailedListener,
     public void onMapReady(GoogleMap googleMap) {
 
     }
+
 }

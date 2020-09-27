@@ -1,5 +1,7 @@
 package com.example.ms3;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
@@ -19,6 +21,7 @@ public class DataParser {
         String latitude="";
         String longitude="";
         String reference="";
+        Log.d("DataParser","jsonobject ="+googlePlaceJson.toString());
         try{
         if(!googlePlaceJson.isNull("name")){
 
@@ -64,6 +67,7 @@ public class DataParser {
     public List<HashMap<String,String>>parse(String jsonData){
         JSONArray jsonArray=null;
         JSONObject jsonObject;
+        Log.d("json data", jsonData);
         try {
             jsonObject=new JSONObject(jsonData);
             jsonArray=jsonObject.getJSONArray("results");
