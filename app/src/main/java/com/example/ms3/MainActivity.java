@@ -46,19 +46,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void send_sms (View view ) {
-
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
-
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED){
-            //MyMessage();
-        }
-        else {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.SEND_SMS}, 0);
-        }
-
-
-    }
 
 
 }
