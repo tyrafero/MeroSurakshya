@@ -7,20 +7,17 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -65,7 +62,6 @@ GoogleApiClient.OnConnectionFailedListener,
     double latitude,longitude;
     Location mLocation;
     Button b7;
-    ImageButton imgbut;
 
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -103,23 +99,7 @@ GoogleApiClient.OnConnectionFailedListener,
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         b7=view.findViewById(R.id.button7);
-        imgbut=view.findViewById(R.id.policecall);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getContext());
-        imgbut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE);
-                if (permissionCheck == PackageManager.PERMISSION_GRANTED){
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:100"));
-                    startActivity(callIntent);
-
-                }
-                else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CALL_PHONE}, 0);
-                }
-            }
-        });
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,7 +122,7 @@ GoogleApiClient.OnConnectionFailedListener,
 
                             try {
                                 Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                                List<Address> address= geocoder.getFromLocation(
+                                List<Address>addresses = geocoder.getFromLocation(
                                         location.getLatitude(),location.getLongitude(),1
                                 );
 

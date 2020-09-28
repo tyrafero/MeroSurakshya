@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WomenLaws"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/T1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="LAWS RELATED TO WOMEN"
+            android:textColor="#000000"
+            android:background="#F8D6D5"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/T2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Every woman shall have equal lineage right without gender discrimination."
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/T1"
+            app:layout_constraintTop_toBottomOf="@+id/T1"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Every woman shall have the right to safe mother mood and reproductive health."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T2"
+            app:layout_constraintTop_toBottomOf="@+id/T2"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No woman shall be subjected to physical,mental,sexual,psychological or other form of violence or exploitation on grounds of religion, social, culture tradition, practice and so on. Such act shall be punished by law, and the victim shall have right to obtain compensation in accordance with law."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T3"
+            app:layout_constraintTop_toBottomOf="@+id/T3"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The spouse shall have the equal right to property and family affairs."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T4"
+            app:layout_constraintTop_toBottomOf="@+id/T4"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All offspring shall have the equal right to the ancestral property without discrimination on the ground of gender."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T5"
+            app:layout_constraintTop_toBottomOf="@+id/T5"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If a person enters into sexual intercourse with a woman without her consent or enters	into sexual	intercourse	with a girl below the age of sixteen years with	or without her consent shall be	deemed to be an offence	of rape."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T6"
+            app:layout_constraintTop_toBottomOf="@+id/T6"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If someone	commits	a rape upon knowing	the	fact that he is living with HIV positive, such an offender shall be liable to imprisonment for a term of one year."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T7"
+            app:layout_constraintTop_toBottomOf="@+id/T7"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One who commits a gang rape or commits rape with a pregnant woman or a disabled woman shall be liable to imprisonment for a term of five years."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T8"
+            app:layout_constraintTop_toBottomOf="@+id/T8"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
