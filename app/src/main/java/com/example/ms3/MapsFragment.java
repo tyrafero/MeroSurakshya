@@ -122,7 +122,7 @@ GoogleApiClient.OnConnectionFailedListener,
 
                             try {
                                 Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                                List<Address> addresses= geocoder.getFromLocation(
+                                List<Address>addresses = geocoder.getFromLocation(
                                         location.getLatitude(),location.getLongitude(),1
                                 );
 

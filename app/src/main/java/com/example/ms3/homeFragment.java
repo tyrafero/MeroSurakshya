@@ -49,7 +49,7 @@ import java.util.Locale;
 
 
 public class homeFragment extends Fragment {
-    private Button b1, button1, b6;
+    private Button b1, button1, b6, b4;
     private EditText e6;
     String number, userid,em,en,eLocation;
     private LatLng userLocation;
@@ -80,6 +80,15 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ImageButton bmain = view.findViewById(R.id.button);
         userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        b4 = view.findViewById(R.id.button4);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), WomenLaws.class);
+                startActivity(intent);
+            }
+        });
+
         button1 = view.findViewById(R.id.button5);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
