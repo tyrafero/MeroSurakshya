@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".threat">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/T1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Tips to Escape from Threat "
+            android:textColor="#000000"
+            android:background="#F8D6D5"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/T2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. If you're being attacked, you have to fight back.
+Whatever your level of strength is, everyone has a move in their arsenal; whether it's because of their age, body type, or fitness habits. Don't think — react, Rubin says."
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/T1"
+            app:layout_constraintTop_toBottomOf="@+id/T1"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Turn what you think is working against you into something that works for you.
+Your high heels may keep your from running away from your attacker at a quick speed, but bring your knee up and slam that pointy tip into your attacker's foot, and you've just made your weakness your best asset. Turn your handbag or your chunky jewelry into a defensive item."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T2"
+            app:layout_constraintTop_toBottomOf="@+id/T2"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Hit your attacker where it hurts.
+If your attacker has you in a chokehold, don't reach for his arms, but instead use your knee to hit him in the groin or the knee."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T3"
+            app:layout_constraintTop_toBottomOf="@+id/T3"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. If you're going to carry a safety item, make sure you know how to use it.
+        Items like a such as mace or pepper spray can harm you too, so be sure you're comfortable enough to break it out in an emergency without hurting yourself in the process. And if you're going to carry it, keep it close at hand — attackers won't give you the time to riffle through your purse to find it."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T4"
+            app:layout_constraintTop_toBottomOf="@+id/T4"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5. When in doubt, bitch slap.
+One of Rubin's go-to strikes is the bitch slap. If someone grabs you around the neck or collar, straighten your arm, lock your elbows, and ram your hand into his ear at full force."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T5"
+            app:layout_constraintTop_toBottomOf="@+id/T5"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

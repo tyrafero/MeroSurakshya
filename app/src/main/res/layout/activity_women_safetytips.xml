@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".women_safetytips">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/T1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Tips for Women Safety"
+            android:textColor="#000000"
+            android:background="#F8D6D5"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/T2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Always be aware. While going through your day to day duties of work, kids, school run, dinner – all those fun life admin tasks that never stop, keep awareness top of mind. Regularly check on your home security and look for anything that’s out of place, don’t forget to arm your alarm when leaving in a rush, and always take note of your surroundings."
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/T1"
+            app:layout_constraintTop_toBottomOf="@+id/T1"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Never pull over when someone points at your car, claiming that something is wrong. Suspects use this tactic to get you to open your window or get out of the car. Rather drive to the nearest garage or shop where you will be safe to have a look yourself or can ask for assistance."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T2"
+            app:layout_constraintTop_toBottomOf="@+id/T2"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Always remember to lock your doors when driving. Suspects often hijack or smash-and-grab motorists stopped at a red traffic light. Don’t make it any easier for them by simply leaving your doors unlocked."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T3"
+            app:layout_constraintTop_toBottomOf="@+id/T3"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Limit distractions in parking lots. Tuck your phone safely in your purse so you can keep your head up to look around and pay attention to your surroundings. If it’s late and you feel uneasy or parked far from the entrance, ask a security guard to escort you to your car. If you reach your car and notice that it has a flat tire, back away immediately and return to the shop from where you can safely ask for assistance or call for help."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T4"
+            app:layout_constraintTop_toBottomOf="@+id/T4"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5. Never walk alone, especially at night. If it can’t be helped, take all possible precautions to ensure your safety. Keep your phone out of sight and refrain from listening to music, as you won’t be able to hear someone approaching you from behind."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T5"
+            app:layout_constraintTop_toBottomOf="@+id/T5"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6. Make eye contact with other pedestrians. By doing this you send a strong defensive signal that you see them and could identify them if necessary. Look them in the eye and give a polite nod to acknowledge them."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T6"
+            app:layout_constraintTop_toBottomOf="@+id/T6"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="7. Scream at the top of your lungs and twist your arm up and down if someone tries to grab you. Do anything you can to draw as much attention to yourself as possible."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T7"
+            app:layout_constraintTop_toBottomOf="@+id/T7"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/T9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8. Hit the body parts that are the most tender if you have to defend yourself against an attacker. You want to aim at whatever is going to hurt the most, regardless of the attacker’s strength and size. These are vulnerable areas like the eyes, nose, throat, groin and shin."
+            android:textSize="20sp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/T8"
+            app:layout_constraintTop_toBottomOf="@+id/T8"
+            android:layout_marginHorizontal="10dp"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

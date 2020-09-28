@@ -90,6 +90,23 @@ public class homeFragment extends Fragment {
         });
 
         button1 = view.findViewById(R.id.button5);
+        Button tipsBut= view.findViewById(R.id.button2);
+        Button threat=view.findViewById(R.id.button3);
+        threat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), threat.class);
+                startActivity(intent);
+
+            }
+        });
+        tipsBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), women_safetytips.class);
+                startActivity(intent);
+            }
+        });
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

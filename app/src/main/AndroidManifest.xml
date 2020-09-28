@@ -3,7 +3,6 @@
     package="com.example.ms3">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,9 +20,9 @@
         android:roundIcon="@mipmap/ms3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WomenLaws"></activity>
-
-
+        <activity android:name=".threat"></activity>
+        <activity android:name=".women_safetytips" />
+        <activity android:name=".WomenLaws" />
         <activity android:name=".Button1" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
